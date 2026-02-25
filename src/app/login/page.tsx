@@ -1,4 +1,4 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { LoginForm } from './login-form'
 
 export default async function LoginPage({
@@ -13,15 +13,12 @@ export default async function LoginPage({
         <CardHeader>
           <CardTitle className="text-2xl">Вход на платформу</CardTitle>
           <CardDescription>
-            Введите данные, выданные преподавателем, для доступа к урокам.
+            Введите свое имя и фамилию для доступа к урокам.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <LoginForm error={error} />
         </CardContent>
-        <CardFooter className="flex flex-col items-start gap-2 text-sm text-muted-foreground">
-           Если у вас нет пароля, запросите его.
-        </CardFooter>
       </Card>
     </div>
   )

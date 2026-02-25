@@ -44,13 +44,6 @@ export default async function Home() {
     },
   ];
 
-  const exam = {
-    id: "exam",
-    title: "Финальный Экзамен (Boss Fight)",
-    description: "Комплексные задачи на время.",
-    isLocked: true,
-  };
-
   return (
     <div className="container mx-auto py-8 px-4 max-w-5xl space-y-8">
       <div>
@@ -100,26 +93,7 @@ export default async function Home() {
         ))}
       </div>
 
-      <div className="pt-4">
-        <Card className={`border-primary/50 bg-primary/5 ${exam.isLocked ? "opacity-60 grayscale" : ""}`}>
-          <CardHeader>
-            <div className="flex justify-between items-center">
-              <div>
-                <CardTitle className="text-2xl text-primary flex items-center gap-2">
-                  ⚔️ {exam.title}
-                </CardTitle>
-                <CardDescription className="mt-2 text-base">{exam.description}</CardDescription>
-              </div>
-              {exam.isLocked ? <Lock className="text-muted-foreground w-6 h-6" /> : <CheckCircle2 className="text-primary w-6 h-6" />}
-            </div>
-          </CardHeader>
-          <CardContent>
-            <Button size="lg" disabled={exam.isLocked} variant="default" className="w-full md:w-auto">
-              Бросить вызов
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
+
     </div>
   );
 }

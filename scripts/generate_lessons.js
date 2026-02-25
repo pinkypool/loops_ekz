@@ -124,7 +124,7 @@ loopTasks.forEach((task, index) => {
         theory: "Решите практическую задачу.",
         task: {
           description: "${task.desc}",
-          initialCode: r"""${task.code}""",
+          initialCode: \`${task.code}\`,
           testCases: [\`
 import sys
 from io import StringIO
@@ -206,7 +206,7 @@ listTasks.forEach((task, index) => {
         theory: "Решите практическую задачу.",
         task: {
           description: "${task.desc}",
-          initialCode: r"""${task.code}""",
+          initialCode: \`${task.code}\`,
           testCases: [\`
 import sys
 from io import StringIO

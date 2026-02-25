@@ -226,8 +226,8 @@ assert output != "", "Вывод пуст"
         theory: "Решите практическую задачу.",
         task: {
           description: "Дано число N = 5. С помощью цикла for выведите все числа от 1 до 5 включительно, каждое с новой строки.",
-          initialCode: r"""N = 5
-""",
+          initialCode: `N = 5
+`,
           testCases: [`
 import sys
 from io import StringIO
@@ -247,8 +247,8 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Посчитайте сумму чисел от 1 до 10 включительно и выведите результат на экран с помощью print().",
-          initialCode: r"""total = 0
-""",
+          initialCode: `total = 0
+`,
           testCases: [`
 import sys
 from io import StringIO
@@ -268,9 +268,9 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Вычислите факториал числа 5 (1 * 2 * 3 * 4 * 5) с помощью цикла и выведите результат.",
-          initialCode: r"""N = 5
+          initialCode: `N = 5
 fact = 1
-""",
+`,
           testCases: [`
 import sys
 from io import StringIO
@@ -290,7 +290,7 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Выведите все четные числа от 2 до 10 включительно (каждое с новой строки).",
-          initialCode: r"""""",
+          initialCode: ``,
           testCases: [`
 import sys
 from io import StringIO
@@ -310,7 +310,7 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "С помощью цикла while или for выведите числа от 5 до 1 в обратном порядке по одному на строке, а затем выведите слово 'Старт!'.",
-          initialCode: r"""""",
+          initialCode: ``,
           testCases: [`
 import sys
 from io import StringIO
@@ -331,8 +331,8 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Дана строка S = 'Python'. Выведите каждую букву на новой строке с помощью цикла for.",
-          initialCode: r"""S = 'Python'
-""",
+          initialCode: `S = 'Python'
+`,
           testCases: [`
 import sys
 from io import StringIO
@@ -352,7 +352,7 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Выведите квадраты чисел от 1 до 5 (включительно) по одному на строке.",
-          initialCode: r"""""",
+          initialCode: ``,
           testCases: [`
 import sys
 from io import StringIO
@@ -372,7 +372,7 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Найдите первое число от 1 до 20, которое делится и на 3, и на 4 (то есть делится без остатка). Выведите его и остановите цикл.",
-          initialCode: r"""""",
+          initialCode: ``,
           testCases: [`
 import sys
 from io import StringIO
@@ -392,7 +392,7 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Выведите таблицу умножения на 3 от 1 до 5. Формат: '3 * 1 = 3', '3 * 2 = 6' и т.д.",
-          initialCode: r"""""",
+          initialCode: ``,
           testCases: [`
 import sys
 from io import StringIO
@@ -412,9 +412,9 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Дана строка text = 'banana'. Посчитайте, сколько раз в ней встречается буква 'a' с помощью цикла и выведите число.",
-          initialCode: r"""text = 'banana'
+          initialCode: `text = 'banana'
 count = 0
-""",
+`,
           testCases: [`
 import sys
 from io import StringIO
@@ -643,7 +643,7 @@ assert output != "", "Вывод пуст"
         theory: "Решите практическую задачу.",
         task: {
           description: "Создайте список `fruits` с элементами 'apple', 'banana', 'cherry' и выведите его.",
-          initialCode: r"""""",
+          initialCode: ``,
           testCases: [`
 import sys
 from io import StringIO
@@ -663,8 +663,8 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Дан список nums = [1, 2]. Добавьте число 3 в конец списка с помощью метода append и выведите список.",
-          initialCode: r"""nums = [1, 2]
-""",
+          initialCode: `nums = [1, 2]
+`,
           testCases: [`
 import sys
 from io import StringIO
@@ -684,8 +684,8 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Дан список colors = ['red', 'green', 'blue']. Выведите на экран его ВТОРОЙ элемент (индекс 1).",
-          initialCode: r"""colors = ['red', 'green', 'blue']
-""",
+          initialCode: `colors = ['red', 'green', 'blue']
+`,
           testCases: [`
 import sys
 from io import StringIO
@@ -705,8 +705,8 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Дан список data = [10, 20, 30, 40, 50]. Выведите количество элементов в нем с помощью функции len().",
-          initialCode: r"""data = [10, 20, 30, 40, 50]
-""",
+          initialCode: `data = [10, 20, 30, 40, 50]
+`,
           testCases: [`
 import sys
 from io import StringIO
@@ -726,8 +726,8 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Дан список nums = [5, 10, 15]. Найдите сумму всех элементов списка с помощью встроенной функции sum() и выведите результат.",
-          initialCode: r"""nums = [5, 10, 15]
-""",
+          initialCode: `nums = [5, 10, 15]
+`,
           testCases: [`
 import sys
 from io import StringIO
@@ -747,8 +747,8 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Дан список arr = [5, 2, 9, 1]. Отсортируйте его по возрастанию (используйте .sort()) и выведите.",
-          initialCode: r"""arr = [5, 2, 9, 1]
-""",
+          initialCode: `arr = [5, 2, 9, 1]
+`,
           testCases: [`
 import sys
 from io import StringIO
@@ -768,8 +768,8 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Дан список scores = [45, 89, 72, 99, 12]. Выведите самое большое число из списка с помощью встроенной функции max().",
-          initialCode: r"""scores = [45, 89, 72, 99, 12]
-""",
+          initialCode: `scores = [45, 89, 72, 99, 12]
+`,
           testCases: [`
 import sys
 from io import StringIO
@@ -789,8 +789,8 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Дан список items = ['book', 'pen', 'pencil']. Удалите элемент 'pen' методом remove() и выведите измененный список.",
-          initialCode: r"""items = ['book', 'pen', 'pencil']
-""",
+          initialCode: `items = ['book', 'pen', 'pencil']
+`,
           testCases: [`
 import sys
 from io import StringIO
@@ -810,8 +810,8 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "Дан список letters = ['a', 'b', 'c', 'd']. Разверните список в обратном порядке (например, с помощью .reverse()) и выведите его.",
-          initialCode: r"""letters = ['a', 'b', 'c', 'd']
-""",
+          initialCode: `letters = ['a', 'b', 'c', 'd']
+`,
           testCases: [`
 import sys
 from io import StringIO
@@ -831,7 +831,7 @@ assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Выво
         theory: "Решите практическую задачу.",
         task: {
           description: "С помощью List Comprehension создайте список квадратов элементов от 1 до 5 (включительно) и выведите его: [1, 4, 9, 16, 25].",
-          initialCode: r"""""",
+          initialCode: ``,
           testCases: [`
 import sys
 from io import StringIO
