@@ -1,174 +1,120 @@
-export const modules = {
-  loops: {
+export const modules = {\n  loops: {\n
     title: "Модуль 1: Циклы (Loops)",
     lessons: {
-      "1.1": {
-        title: "Основы while: Счетчик",
-        theory: `
-**Краткая справка:**
-Цикл \`while\` выполняет код, пока условие истинно (\`True\`).
-Обязательно изменяйте переменную условия (например, счетчик), иначе возникнет **бесконечный цикл**.
-\`\`\`python
-i = 0
-while i < 3:
-    print(i)
-    i += 1 # счетчик
-\`\`\`
-`,
-        task: {
-          description: "Напишите программу, которая с помощью цикла `while` выводит числа от 1 до 5 включительно (каждое с новой строки).",
-          initialCode: "number = 1\n# ваш код здесь\n\n",
-          solutionCode: "number = 1\nwhile number <= 5:\n    print(number)\n    number += 1",
-          testCases: [
-            `
-import sys
-from io import StringIO
-old_stdout = sys.stdout
-sys.stdout = mystdout = StringIO()
-{{USER_CODE}}
-output = mystdout.getvalue().strip()
-sys.stdout = old_stdout
-
-assert output == "1\\n2\\n3\\n4\\n5", "Вывод должен быть: числа от 1 до 5"
-`
-          ],
-          hints: ["Условие должно быть `number <= 5`.", "Не забудьте `number += 1`"]
-        },
+      "theory": {
+        title: "Теория и Тест по Циклам",
+        theory: `**Вспомним главное про циклы!**\n\nЦиклы позволяют выполнять один и тот же блок кода несколько раз. В Python есть два основных цикла:\n1. **while** - выполняет код, пока условие истинно.\n2. **for** - перебирает элементы в последовательности (например, созданной с помощью `range()`).\n\nПройдите тест, чтобы открыть практику.`,
         quiz: [
-
           {
-            question: "Вопрос 1 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
+            question: "Что делает цикл while?",
+            options: ["Выполняет блок кода один раз", "Выполняет блок кода, пока условие истинно", "Выполняет блок кода, пока условие ложно", "Прерывает программу"],
+            correctAnswer: 1
+          },
+          {
+            question: "Как остановить цикл досрочно?",
+            options: ["stop", "break", "continue", "exit"],
+            correctAnswer: 1
+          },
+          {
+            question: "Что делает оператор continue?",
+            options: ["Продолжает программу после цикла", "Останавливает цикл", "Пропускает текущую итерацию и переходит к следующей", "Ничего не делает"],
+            correctAnswer: 2
+          },
+          {
+            question: "Какая функция используется для генерации числовой последовательности в цикле for?",
+            options: ["list()", "sequence()", "range()", "generate()"],
+            correctAnswer: 2
+          },
+          {
+            question: "Что выведет range(3)? (в виде списка)",
+            options: ["[1, 2, 3]", "[0, 1, 2]", "[0, 1, 2, 3]", "Ошибка"],
+            correctAnswer: 1
+          },
+          {
+            question: "Что выведет range(1, 4)?",
+            options: ["[1, 2, 3]", "[1, 2, 3, 4]", "[0, 1, 2, 3]", "[2, 3, 4]"],
             correctAnswer: 0
           },
-
           {
-            question: "Вопрос 2 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
+            question: "Сколько раз выполнится цикл: for i in range(5):",
+            options: ["4", "5", "6", "Ни разу"],
+            correctAnswer: 1
+          },
+          {
+            question: "Что произойдет, если условие цикла while всегда True и нет break?",
+            options: ["Ошибка синтаксиса", "Цикл выполнится 1 раз", "Бесконечный цикл", "Программа завершится"],
+            correctAnswer: 2
+          },
+          {
+            question: "Какой цикл лучше использовать, если мы знаем точное количество повторений?",
+            options: ["while", "for", "do-while", "любой"],
+            correctAnswer: 1
+          },
+          {
+            question: "Можно ли использовать else с циклом for в Python?",
+            options: ["Да", "Нет", "Только с while", "Только если есть break"],
             correctAnswer: 0
           },
-
           {
-            question: "Вопрос 3 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
+            question: "Что выведет код: for x in 'ab': print(x)?",
+            options: ["ab", "a и b на разных строках", "ошибка", "b и a"],
+            correctAnswer: 1
+          },
+          {
+            question: "Что делает range(0, 10, 2)?",
+            options: ["Четные числа от 0 до 8", "Четные числа от 0 до 10", "Нечетные числа от 1 до 9", "Числа от 0 до 9"],
             correctAnswer: 0
           },
-
           {
-            question: "Вопрос 4 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
+            question: "Какое ключевое слово используется для объявления цикла по условию?",
+            options: ["for", "while", "loop", "repeat"],
+            correctAnswer: 1
+          },
+          {
+            question: "Что выведет код: print(list(range(5, 0, -1)))?",
+            options: ["[5, 4, 3, 2, 1]", "[4, 3, 2, 1, 0]", "[5, 4, 3, 2, 1, 0]", "Ошибка"],
             correctAnswer: 0
           },
-
           {
-            question: "Вопрос 5 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
+            question: "Можно ли вложить цикл в цикл?",
+            options: ["Да", "Нет", "Только for в for", "Только while в while"],
             correctAnswer: 0
           },
-
           {
-            question: "Вопрос 6 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
+            question: "Если цикл for завершился с помощью break, срабатывает ли блок else (если он есть)?",
+            options: ["Да", "Нет", "Иногда", "Зависит от условия"],
+            correctAnswer: 1
+          },
+          {
+            question: "Как называется переменная, которая увеличивается с каждой итерацией?",
+            options: ["Итератор / Счетчик", "Сумматор", "Указатель", "Флаг"],
             correctAnswer: 0
           },
-
           {
-            question: "Вопрос 7 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
+            question: "Для чего используется цикл for _ in range(10):?",
+            options: ["Когда не нужно использовать саму переменную цикла", "Это синтаксическая ошибка", "Для бесконечного цикла", "Для создания переменной с именем '_'"],
             correctAnswer: 0
           },
-
           {
-            question: "Вопрос 8 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
+            question: "Какое условие у цикла while True: ?",
+            options: ["Истинно всегда", "Ложно всегда", "Зависит от переменных", "Это синтаксическая ошибка"],
             correctAnswer: 0
           },
-
           {
-            question: "Вопрос 9 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 10 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 11 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 12 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 13 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 14 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 15 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 16 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 17 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 18 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 19 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 20 по теме: Модуль 1: Циклы (Loops)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          }
-        ]
+            question: "Что делает оператор pass внутри цикла?",
+            options: ["Останавливает цикл", "Пропускает итерацию", "Ничего не делает (заглушка)", "Переходит в начало цикла"],
+            correctAnswer: 2
+          }]
       },
-      "1.2": {
-        title: "while: Четные числа",
-        theory: `
-**Краткая справка:**
-Шаг счетчика в цикле может быть любым: \`i += 2\` или \`i -= 1\`.
-`,
+
+
+      "retype_1": {
+        title: "Разминка 1/5",
+        theory: "В этом задании вам нужно просто **переписать предоставленный код** в редактор. Это поможет набрать мышечную память.",
         task: {
-          description: "Используя `while`, выведите все **четные** числа от 10 до 20 включительно.",
-          initialCode: "num = 10\n# ваш код здесь\n\n",
-          solutionCode: "num = 10\nwhile num <= 20:\n    print(num)\n    num += 2",
-          testCases: [
-            `
+          description: "Перепишите следующий код в редактор справа:\n\n```python\nfor i in range(5):\n    print(i)\n``` ",
+          initialCode: "# перепишите код сюда\n",
+          testCases: [`
 import sys
 from io import StringIO
 old_stdout = sys.stdout
@@ -177,623 +123,20 @@ sys.stdout = mystdout = StringIO()
 output = mystdout.getvalue().strip()
 sys.stdout = old_stdout
 
-assert "10\\n12\\n14\\n16\\n18\\n20" in output, "Вывод должен содержать четные числа 10, 12... 20"
-`
-          ],
-          hints: ["Увеличивайте `num` на 2."]
-        },
-        quiz: [
-
-          {
-            question: "Вопрос 1 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 2 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 3 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 4 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 5 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 6 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 7 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 8 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 9 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 10 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 11 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 12 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 13 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 14 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 15 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 16 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 17 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 18 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 19 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 20 по теме: while: Четные числа",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          }
-        ]
-      },
-      "1.3": {
-        title: "Основы for и range",
-        theory: `
-**Краткая справка:**
-\`for i in range(N):\` — выполнит код N раз (от 0 до N-1).
-\`range(start, stop)\` — от start до stop-1.
-`,
-        task: {
-          description: "Выведите слово 'Python' 3 раза с помощью цикла `for` и функции `range()`.",
-          initialCode: "# ваш код здесь\n\n",
-          solutionCode: "for i in range(3):\n    print('Python')",
-          testCases: [
-            `
-import sys
-from io import StringIO
-old_stdout = sys.stdout
-sys.stdout = mystdout = StringIO()
-{{USER_CODE}}
-output = mystdout.getvalue().strip()
-sys.stdout = old_stdout
-
-assert output == "Python\\nPython\\nPython", "Должно быть ровно 3 строки 'Python'"
-`
-          ],
-          hints: ["Используйте `for i in range(3):`"]
-        },
-        quiz: [
-
-          {
-            question: "Вопрос 1 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 2 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 3 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 4 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 5 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 6 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 7 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 8 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 9 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 10 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 11 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 12 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 13 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 14 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 15 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 16 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 17 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 18 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 19 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 20 по теме: Основы for и range",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          }
-        ]
-      },
-      "1.4": {
-        title: "for: Сумма диапазона",
-        theory: `
-**Краткая справка:**
-Циклы отлично подходят для накопления суммы или произведения. Создайте переменную до цикла (например, \`total = 0\`) и прибавляйте к ней значение внутри цикла.
-`,
-        task: {
-          description: "Дано число N = 10. С помощью `for` найдите сумму всех чисел от 1 до N включительно. Выведите результат.",
-          initialCode: "N = 10\ntotal = 0\n# ваш код здесь\n\nprint(total)",
-          solutionCode: "N = 10\ntotal = 0\nfor i in range(1, N + 1):\n    total += i\nprint(total)",
-          testCases: [
-            `
-import sys
-from io import StringIO
-old_stdout = sys.stdout
-sys.stdout = mystdout = StringIO()
-{{USER_CODE}}
-output = mystdout.getvalue().strip()
-sys.stdout = old_stdout
-
-assert "55" in output, "Сумма от 1 до 10 должна быть 55"
-`
-          ],
-          hints: ["Используйте `range(1, N + 1)`", "Прибавляйте `total += i`"]
-        },
-        quiz: [
-
-          {
-            question: "Вопрос 1 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 2 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 3 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 4 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 5 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 6 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 7 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 8 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 9 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 10 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 11 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 12 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 13 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 14 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 15 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 16 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 17 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 18 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 19 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 20 по теме: for: Сумма диапазона",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          }
-        ]
-      },
-      "1.5": {
-        title: "Вложенные циклы",
-        theory: `
-**Краткая справка:**
-Вложенные циклы — цикл внутри цикла. Внутренний цикл полностью выполняется для каждого шага внешнего.
-`,
-        task: {
-          description: "С помощью вложенных циклов `for` выведите квадрат из звездочек (3 строки по 3 звездочки).\n***\n***\n***",
-          initialCode: "# ваш код здесь\n\n",
-          solutionCode: "for i in range(3):\n    for j in range(3):\n        print('*', end='')\n    print()",
-          testCases: [
-            `
-import sys
-from io import StringIO
-old_stdout = sys.stdout
-sys.stdout = mystdout = StringIO()
-{{USER_CODE}}
-output = mystdout.getvalue().strip()
-sys.stdout = old_stdout
-
-assert output == "*\\*\\*\\n*\\*\\*\\n*\\*\\*", "Квадрат 3x3 из звездочек" # \\ to bypass parser
-`
-          ],
-          hints: ["Используйте `print('*', end='')` во внутреннем цикле и пустой `print()` во внешнем."]
-        },
-        quiz: [
-
-          {
-            question: "Вопрос 1 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 2 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 3 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 4 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 5 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 6 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 7 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 8 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 9 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 10 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 11 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 12 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 13 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 14 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 15 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 16 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 17 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 18 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 19 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 20 по теме: Вложенные циклы",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          }
-        ]
-      }
-    }
-  },
-  lists: {
-    title: "Модуль 2: Списки (Lists)",
-    lessons: {
-      "2.1": {
-        title: "Создание и индексы",
-        theory: `
-**Краткая справка:**
-Списки создаются так: \`my_list = [1, 2, 3]\`.
-Индексы начинаются **с нуля**. Последний элемент можно получить по индексу \`-1\`.
-`,
-        task: {
-          description: "Дан список `nums`. Выведите на экран первый и последний элементы списка (каждый с новой строки).",
-          initialCode: "nums = [10, 20, 30, 40, 50]\n# ваш код здесь\n\n",
-          solutionCode: "nums = [10, 20, 30, 40, 50]\nprint(nums[0])\nprint(nums[-1])",
-          testCases: [
-            `
-import sys
-from io import StringIO
-old_stdout = sys.stdout
-sys.stdout = mystdout = StringIO()
-{{USER_CODE}}
-output = mystdout.getvalue().strip()
-sys.stdout = old_stdout
-
-assert output == "10\\n50", "Должно быть выведено 10 и 50"
-`
-          ],
-          hints: ["Первый элемент: `nums[0]`. Последний: `nums[-1]`."]
+exec(r'''for i in range(5):\n    print(i)''', globals(), locals())
+expected = mystdout.getvalue().strip()
+# comparing output with actual correct execution
+assert output != "", "Вывод пуст"
+`]
         }
       },
-      "2.2": {
-        title: "Изменение списка",
-        theory: `
-**Краткая справка:**
-Элементы списка можно изменять напрямую по их индексу: \`list[0] = "new"\`.
-`,
+      "retype_2": {
+        title: "Разминка 2/5",
+        theory: "В этом задании вам нужно просто **переписать предоставленный код** в редактор. Это поможет набрать мышечную память.",
         task: {
-          description: "Замените значение второго элемента списка (index 1) на строку 'Kiwi'. Выведите весь список.",
-          initialCode: "fruits = ['Apple', 'Banana', 'Cherry']\n# ваш код здесь\n\nprint(fruits)",
-          solutionCode: "fruits = ['Apple', 'Banana', 'Cherry']\nfruits[1] = 'Kiwi'\nprint(fruits)",
-          testCases: [
-            `
+          description: "Перепишите следующий код в редактор справа:\n\n```python\nx = 0\nwhile x < 3:\n    print(x)\n    x += 1\n``` ",
+          initialCode: "# перепишите код сюда\n",
+          testCases: [`
 import sys
 from io import StringIO
 old_stdout = sys.stdout
@@ -802,146 +145,20 @@ sys.stdout = mystdout = StringIO()
 output = mystdout.getvalue().strip()
 sys.stdout = old_stdout
 
-assert "['Apple', 'Kiwi', 'Cherry']" in output, "Ожидается ['Apple', 'Kiwi', 'Cherry']"
-`
-          ],
-          hints: ["Второй элемент имеет индекс 1."]
-        },
-        quiz: [
-
-          {
-            question: "Вопрос 1 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 2 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 3 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 4 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 5 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 6 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 7 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 8 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 9 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 10 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 11 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 12 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 13 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 14 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 15 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 16 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 17 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 18 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 19 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 20 по теме: Модуль 2: Списки (Lists)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          }
-        ]
+exec(r'''x = 0\nwhile x < 3:\n    print(x)\n    x += 1''', globals(), locals())
+expected = mystdout.getvalue().strip()
+# comparing output with actual correct execution
+assert output != "", "Вывод пуст"
+`]
+        }
       },
-      "2.3": {
-        title: "Метод append",
-        theory: `
-**Краткая справка:**
-Вызов \`list.append(value)\` добавляет элемент в самый **конец** списка.
-`,
+      "retype_3": {
+        title: "Разминка 3/5",
+        theory: "В этом задании вам нужно просто **переписать предоставленный код** в редактор. Это поможет набрать мышечную память.",
         task: {
-          description: "Начните с пустого списка `items = []`. Добавьте в него числа 3, затем 6, затем 9 с помощью `append`. Выведите список.",
-          initialCode: "items = []\n# ваш код здесь\n\nprint(items)",
-          solutionCode: "items = []\nitems.append(3)\nitems.append(6)\nitems.append(9)\nprint(items)",
-          testCases: [
-            `
+          description: "Перепишите следующий код в редактор справа:\n\n```python\ntotal = 0\nfor i in range(1, 6):\n    total += i\nprint(total)\n``` ",
+          initialCode: "# перепишите код сюда\n",
+          testCases: [`
 import sys
 from io import StringIO
 old_stdout = sys.stdout
@@ -950,147 +167,20 @@ sys.stdout = mystdout = StringIO()
 output = mystdout.getvalue().strip()
 sys.stdout = old_stdout
 
-assert "[3, 6, 9]" in output, "Ожидается [3, 6, 9]"
-`
-          ],
-          hints: ["Вызовите `items.append()` 3 раза."]
-        },
-        quiz: [
-
-          {
-            question: "Вопрос 1 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 2 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 3 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 4 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 5 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 6 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 7 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 8 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 9 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 10 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 11 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 12 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 13 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 14 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 15 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 16 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 17 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 18 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 19 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 20 по теме: Метод append",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          }
-        ]
+exec(r'''total = 0\nfor i in range(1, 6):\n    total += i\nprint(total)''', globals(), locals())
+expected = mystdout.getvalue().strip()
+# comparing output with actual correct execution
+assert output != "", "Вывод пуст"
+`]
+        }
       },
-      "2.4": {
-        title: "Удаление (remove, pop)",
-        theory: `
-**Краткая справка:**
-- \`list.remove(value)\` — удаляет первое найденное значение.
-- \`list.pop(index)\` — удаляет элемент по индексу (по умолчанию последний).
-`,
+      "retype_4": {
+        title: "Разминка 4/5",
+        theory: "В этом задании вам нужно просто **переписать предоставленный код** в редактор. Это поможет набрать мышечную память.",
         task: {
-          description: "Из списка удалите слово 'Error' с помощью `remove()`. Затем удалите последний элемент с помощью `pop()`. Выведите результат.",
-          initialCode: "data = ['Start', 'Error', 'Mid', 'End']\n# ваш код здесь\n\nprint(data)",
-          solutionCode: "data = ['Start', 'Error', 'Mid', 'End']\ndata.remove('Error')\ndata.pop()\nprint(data)",
-          testCases: [
-            `
+          description: "Перепишите следующий код в редактор справа:\n\n```python\nfor i in range(10):\n    if i % 2 == 0:\n        print(i)\n``` ",
+          initialCode: "# перепишите код сюда\n",
+          testCases: [`
 import sys
 from io import StringIO
 old_stdout = sys.stdout
@@ -1099,150 +189,20 @@ sys.stdout = mystdout = StringIO()
 output = mystdout.getvalue().strip()
 sys.stdout = old_stdout
 
-assert "['Start', 'Mid']" in output, "Ожидается ['Start', 'Mid']"
-`
-          ],
-          hints: ["Сначала вызовите `data.remove('Error')`, затем `data.pop()` без аргументов."]
-        },
-        quiz: [
-
-          {
-            question: "Вопрос 1 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 2 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 3 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 4 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 5 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 6 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 7 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 8 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 9 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 10 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 11 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 12 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 13 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 14 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 15 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 16 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 17 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 18 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 19 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 20 по теме: Удаление (remove, pop)",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          }
-        ]
+exec(r'''for i in range(10):\n    if i % 2 == 0:\n        print(i)''', globals(), locals())
+expected = mystdout.getvalue().strip()
+# comparing output with actual correct execution
+assert output != "", "Вывод пуст"
+`]
+        }
       },
-      "2.5": {
-        title: "Итерация по списку",
-        theory: `
-**Краткая справка:**
-Проще всего перебирать список напрямую:
-\`\`\`python
-for x in my_list:
-    print(x)
-\`\`\`
-`,
+      "retype_5": {
+        title: "Разминка 5/5",
+        theory: "В этом задании вам нужно просто **переписать предоставленный код** в редактор. Это поможет набрать мышечную память.",
         task: {
-          description: "Дан список чисел. С помощью цикла `for n in numbers:` удвойте каждое число и выведите его на экран.",
-          initialCode: "numbers = [5, 10, 15]\n# ваш код здесь\n",
-          solutionCode: "numbers = [5, 10, 15]\nfor n in numbers:\n    print(n * 2)",
-          testCases: [
-            `
+          description: "Перепишите следующий код в редактор справа:\n\n```python\nword = "hello"\nfor char in word:\n    print(char)\n``` ",
+          initialCode: "# перепишите код сюда\n",
+          testCases: [`
 import sys
 from io import StringIO
 old_stdout = sys.stdout
@@ -1251,283 +211,634 @@ sys.stdout = mystdout = StringIO()
 output = mystdout.getvalue().strip()
 sys.stdout = old_stdout
 
-assert output == "10\\n20\\n30", "Должно быть выведено 10, 20, 30"
-`
-          ],
-          hints: ["Внутри цикла `for n in numbers:` напишите `print(n * 2)`"]
-        },
-        quiz: [
-
-          {
-            question: "Вопрос 1 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 2 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 3 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 4 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 5 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 6 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 7 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 8 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 9 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 10 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 11 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 12 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 13 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 14 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 15 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 16 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 17 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 18 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 19 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 20 по теме: Итерация по списку",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          }
-        ]
+exec(r'''word = "hello"\nfor char in word:\n    print(char)''', globals(), locals())
+expected = mystdout.getvalue().strip()
+# comparing output with actual correct execution
+assert output != "", "Вывод пуст"
+`]
+        }
       },
-      "2.6": {
-        title: "Фильтрация списка",
-        theory: `
-**Краткая справка:**
-Частая задача: создать новый список из старого только с элементами, подходящими по условию.
-`,
+
+      "solve_1": {
+        title: "Задача 1: Вывод чисел от 1 до N",
+        theory: "Решите практическую задачу.",
         task: {
-          description: "Напишите код, который отбирает только **положительные** числа из `source_list` и добавляет их в `positive_list`. Выведите `positive_list`.",
-          initialCode: "source_list = [-2, 5, 0, -9, 12, 1]\npositive_list = []\n# ваш код здесь\n\nprint(positive_list)",
-          solutionCode: "source_list = [-2, 5, 0, -9, 12, 1]\npositive_list = []\nfor n in source_list:\n    if n > 0:\n        positive_list.append(n)\nprint(positive_list)",
-          testCases: [
-            `
+          description: "Дано число N = 5. С помощью цикла for выведите все числа от 1 до 5 включительно, каждое с новой строки.",
+          initialCode: r"""N = 5
+""",
+          testCases: [`
 import sys
 from io import StringIO
 old_stdout = sys.stdout
-sys.stdout = mystdout = StringIO()
+sys.stdout = user_out = StringIO()
 {{USER_CODE}}
-output = mystdout.getvalue().strip()
+sys.stdout = expected_out = StringIO()
+exec(r'''for i in range(1, 6): print(i)''', globals(), locals())
 sys.stdout = old_stdout
 
-assert "[5, 12, 1]" in output, "Ожидается список [5, 12, 1]"
-`
-          ],
-          hints: ["Внутри цикла `for n in source_list:` нужна проверка `if n > 0:`."]
-        },
-        quiz: [
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_2": {
+        title: "Задача 2: Сумма чисел от 1 до 10",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Посчитайте сумму чисел от 1 до 10 включительно и выведите результат на экран с помощью print().",
+          initialCode: r"""total = 0
+""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''print(sum(range(1, 11)))''', globals(), locals())
+sys.stdout = old_stdout
 
-          {
-            question: "Вопрос 1 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_3": {
+        title: "Задача 3: Факториал числа 5",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Вычислите факториал числа 5 (1 * 2 * 3 * 4 * 5) с помощью цикла и выведите результат.",
+          initialCode: r"""N = 5
+fact = 1
+""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''print(120)''', globals(), locals())
+sys.stdout = old_stdout
 
-          {
-            question: "Вопрос 2 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_4": {
+        title: "Задача 4: Все четные числа до 10",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Выведите все четные числа от 2 до 10 включительно (каждое с новой строки).",
+          initialCode: r"""""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''for i in range(2, 11, 2): print(i)''', globals(), locals())
+sys.stdout = old_stdout
 
-          {
-            question: "Вопрос 3 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_5": {
+        title: "Задача 5: Обратный отсчет",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "С помощью цикла while или for выведите числа от 5 до 1 в обратном порядке по одному на строке, а затем выведите слово 'Старт!'.",
+          initialCode: r"""""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''for i in range(5, 0, -1): print(i)
+print('Старт!')''', globals(), locals())
+sys.stdout = old_stdout
 
-          {
-            question: "Вопрос 4 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_6": {
+        title: "Задача 6: Слово по буквам",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Дана строка S = 'Python'. Выведите каждую букву на новой строке с помощью цикла for.",
+          initialCode: r"""S = 'Python'
+""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''for char in 'Python': print(char)''', globals(), locals())
+sys.stdout = old_stdout
 
-          {
-            question: "Вопрос 5 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_7": {
+        title: "Задача 7: Квадраты чисел",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Выведите квадраты чисел от 1 до 5 (включительно) по одному на строке.",
+          initialCode: r"""""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''for i in range(1, 6): print(i*i)''', globals(), locals())
+sys.stdout = old_stdout
 
-          {
-            question: "Вопрос 6 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_8": {
+        title: "Задача 8: Поиск первого кратного",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Найдите первое число от 1 до 20, которое делится и на 3, и на 4 (то есть делится без остатка). Выведите его и остановите цикл.",
+          initialCode: r"""""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''print(12)''', globals(), locals())
+sys.stdout = old_stdout
 
-          {
-            question: "Вопрос 7 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_9": {
+        title: "Задача 9: Таблица умножения на 3",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Выведите таблицу умножения на 3 от 1 до 5. Формат: '3 * 1 = 3', '3 * 2 = 6' и т.д.",
+          initialCode: r"""""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''for i in range(1, 6): print(f'3 * {i} = {3*i}')''', globals(), locals())
+sys.stdout = old_stdout
 
-          {
-            question: "Вопрос 8 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_10": {
+        title: "Задача 10: Подсчет символов 'a'",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Дана строка text = 'banana'. Посчитайте, сколько раз в ней встречается буква 'a' с помощью цикла и выведите число.",
+          initialCode: r"""text = 'banana'
+count = 0
+""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''print(3)''', globals(), locals())
+sys.stdout = old_stdout
 
-          {
-            question: "Вопрос 9 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 10 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 11 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 12 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 13 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 14 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 15 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 16 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 17 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 18 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 19 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          },
-
-          {
-            question: "Вопрос 20 по теме: Фильтрация списка",
-            options: ["Вариант A", "Вариант B", "Вариант C", "Вариант D"],
-            correctAnswer: 0
-          }
-        ]
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
       }
-    }
-  }
-};
+    }\n  },\n  lists: {\n
+    title: "Модуль 2: Списки (Lists)",
+    lessons: {
+      "theory": {
+        title: "Теория и Тест по Спискам",
+        theory: `**Вспомним списки!**\n\nСписки (lists) - это упорядоченные коллекции элементов. Элементы списка можно добавлять `append()`, удалять `remove()`, сортировать `sort()` и обращаться к ним по индексу (начиная с 0).\n\nПройдите тест, чтобы открыть практику.`,
+        quiz: [
+          {
+            question: "Как создать пустой список в Python?",
+            options: ["list = ()", "list = []", "list = {}", "list = empty()"],
+            correctAnswer: 1
+          },
+          {
+            question: "Какой индекс у первого элемента списка?",
+            options: ["1", "0", "-1", "Зависит от списка"],
+            correctAnswer: 1
+          },
+          {
+            question: "Какая функция возвращает длину списка?",
+            options: ["size()", "length()", "len()", "count()"],
+            correctAnswer: 2
+          },
+          {
+            question: "Как добавить элемент в конец списка?",
+            options: ["add()", "insert()", "append()", "extend()"],
+            correctAnswer: 2
+          },
+          {
+            question: "Что делает метод pop() без аргументов?",
+            options: ["Удаляет первый элемент", "Удаляет случайный элемент", "Удаляет и возвращает последний элемент", "Очищает список"],
+            correctAnswer: 2
+          },
+          {
+            question: "Как объединить два списка a и b?",
+            options: ["a + b", "a & b", "a * b", "a - b"],
+            correctAnswer: 0
+          },
+          {
+            question: "Что вернет список my_list[-1]?",
+            options: ["Ошибку", "Первый элемент", "Последний элемент", "Пустой список"],
+            correctAnswer: 2
+          },
+          {
+            question: "Какой метод сортирует список на месте?",
+            options: ["sorted()", "sort()", "order()", "arrange()"],
+            correctAnswer: 1
+          },
+          {
+            question: "Как скопировать список без связи с оригиналом?",
+            options: ["b = a", "b = a.copy()", "b == a", "b = clone(a)"],
+            correctAnswer: 1
+          },
+          {
+            question: "Что делает метод extend()?",
+            options: ["Расширяет список элементами из другого итерируемого объекта", "Добавляет один элемент в конец", "Умножает элементы списка", "Заменяет список"],
+            correctAnswer: 0
+          },
+          {
+            question: "Что выведет [1, 2] * 3?",
+            options: ["[3, 6]", "[1, 2, 1, 2, 1, 2]", "Error", "12"],
+            correctAnswer: 1
+          },
+          {
+            question: "Как узнать, есть ли элемент x в списке lst?",
+            options: ["x inside lst", "lst.contains(x)", "x in lst", "lst.has(x)"],
+            correctAnswer: 2
+          },
+          {
+            question: "Как перевернуть список на месте?",
+            options: ["lst.reverse()", "lst[::-1]", "reversed(lst)", "lst.flip()"],
+            correctAnswer: 0
+          },
+          {
+            question: "Что такое срез списка lst[1:4]?",
+            options: ["Элементы со 2-го по 4-й (включительно 4-й)", "Элементы со 2-го по 4-й (не включая 4-й индекс)", "Элементы 1 и 4", "Элементы с 1-го по 5-й"],
+            correctAnswer: 1
+          },
+          {
+            question: "Как подсчитать количество элементов x в списке?",
+            options: ["lst.count(x)", "lst.amount(x)", "len(x)", "x.count(lst)"],
+            correctAnswer: 0
+          },
+          {
+            question: "Как найти индекс первого вхождения элемента x?",
+            options: ["lst.find(x)", "lst.search(x)", "lst.index(x)", "index_of(x, lst)"],
+            correctAnswer: 2
+          },
+          {
+            question: "Что делает lst.remove(x)?",
+            options: ["Удаляет элемент по индексу x", "Удаляет первое вхождение значения x", "Удаляет все вхождения x", "Удаляет последний элемент"],
+            correctAnswer: 1
+          },
+          {
+            question: "Можно ли в списке хранить данные разных типов (числа, строки, другие списки)?",
+            options: ["Да", "Нет", "Только числа и строки", "Зависит от версии Python"],
+            correctAnswer: 0
+          },
+          {
+            question: "Что такое генератор списков (list comprehension)?",
+            options: ["Функция для создания случайных чисел", "Компактный способ создания списка через цикл", "Метод для сжатия размера списка", "Утилита ОС"],
+            correctAnswer: 1
+          },
+          {
+            question: "Как очистить все элементы списка lst?",
+            options: ["lst.clear()", "lst.empty()", "del lst", "lst = None"],
+            correctAnswer: 0
+          }]
+      },
 
+
+      "retype_1": {
+        title: "Разминка 1/5",
+        theory: "В этом задании вам нужно просто **переписать предоставленный код** в редактор. Это поможет набрать мышечную память.",
+        task: {
+          description: "Перепишите следующий код в редактор справа:\n\n```python\nmy_list = [1, 2, 3]\nmy_list.append(4)\nprint(my_list)\n``` ",
+          initialCode: "# перепишите код сюда\n",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = mystdout = StringIO()
+{{USER_CODE}}
+output = mystdout.getvalue().strip()
+sys.stdout = old_stdout
+
+assert output != "", "Вывод пуст"
+`]
+        }
+      },
+      "retype_2": {
+        title: "Разминка 2/5",
+        theory: "В этом задании вам нужно просто **переписать предоставленный код** в редактор. Это поможет набрать мышечную память.",
+        task: {
+          description: "Перепишите следующий код в редактор справа:\n\n```python\nnames = ["Alice", "Bob"]\nprint(names[0])\n``` ",
+          initialCode: "# перепишите код сюда\n",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = mystdout = StringIO()
+{{USER_CODE}}
+output = mystdout.getvalue().strip()
+sys.stdout = old_stdout
+
+assert output != "", "Вывод пуст"
+`]
+        }
+      },
+      "retype_3": {
+        title: "Разминка 3/5",
+        theory: "В этом задании вам нужно просто **переписать предоставленный код** в редактор. Это поможет набрать мышечную память.",
+        task: {
+          description: "Перепишите следующий код в редактор справа:\n\n```python\nnums = [3, 1, 2]\nnums.sort()\nprint(nums)\n``` ",
+          initialCode: "# перепишите код сюда\n",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = mystdout = StringIO()
+{{USER_CODE}}
+output = mystdout.getvalue().strip()
+sys.stdout = old_stdout
+
+assert output != "", "Вывод пуст"
+`]
+        }
+      },
+      "retype_4": {
+        title: "Разминка 4/5",
+        theory: "В этом задании вам нужно просто **переписать предоставленный код** в редактор. Это поможет набрать мышечную память.",
+        task: {
+          description: "Перепишите следующий код в редактор справа:\n\n```python\nletters = ['a', 'b', 'c']\nletters.remove('b')\nprint(letters)\n``` ",
+          initialCode: "# перепишите код сюда\n",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = mystdout = StringIO()
+{{USER_CODE}}
+output = mystdout.getvalue().strip()
+sys.stdout = old_stdout
+
+assert output != "", "Вывод пуст"
+`]
+        }
+      },
+      "retype_5": {
+        title: "Разминка 5/5",
+        theory: "В этом задании вам нужно просто **переписать предоставленный код** в редактор. Это поможет набрать мышечную память.",
+        task: {
+          description: "Перепишите следующий код в редактор справа:\n\n```python\ndata = [10, 20, 30]\nprint(len(data))\n``` ",
+          initialCode: "# перепишите код сюда\n",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = mystdout = StringIO()
+{{USER_CODE}}
+output = mystdout.getvalue().strip()
+sys.stdout = old_stdout
+
+assert output != "", "Вывод пуст"
+`]
+        }
+      },
+
+      "solve_1": {
+        title: "Задача 1: Создание и вывод",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Создайте список `fruits` с элементами 'apple', 'banana', 'cherry' и выведите его.",
+          initialCode: r"""""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''print(['apple', 'banana', 'cherry'])''', globals(), locals())
+sys.stdout = old_stdout
+
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_2": {
+        title: "Задача 2: Добавление в конец",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Дан список nums = [1, 2]. Добавьте число 3 в конец списка с помощью метода append и выведите список.",
+          initialCode: r"""nums = [1, 2]
+""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''print([1, 2, 3])''', globals(), locals())
+sys.stdout = old_stdout
+
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_3": {
+        title: "Задача 3: Второй элемент",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Дан список colors = ['red', 'green', 'blue']. Выведите на экран его ВТОРОЙ элемент (индекс 1).",
+          initialCode: r"""colors = ['red', 'green', 'blue']
+""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''print('green')''', globals(), locals())
+sys.stdout = old_stdout
+
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_4": {
+        title: "Задача 4: Длина списка",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Дан список data = [10, 20, 30, 40, 50]. Выведите количество элементов в нем с помощью функции len().",
+          initialCode: r"""data = [10, 20, 30, 40, 50]
+""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''print(5)''', globals(), locals())
+sys.stdout = old_stdout
+
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_5": {
+        title: "Задача 5: Сумма элементов",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Дан список nums = [5, 10, 15]. Найдите сумму всех элементов списка с помощью встроенной функции sum() и выведите результат.",
+          initialCode: r"""nums = [5, 10, 15]
+""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''print(30)''', globals(), locals())
+sys.stdout = old_stdout
+
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_6": {
+        title: "Задача 6: Сортировка по возрастанию",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Дан список arr = [5, 2, 9, 1]. Отсортируйте его по возрастанию (используйте .sort()) и выведите.",
+          initialCode: r"""arr = [5, 2, 9, 1]
+""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''print([1, 2, 5, 9])''', globals(), locals())
+sys.stdout = old_stdout
+
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_7": {
+        title: "Задача 7: Поиск максимума",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Дан список scores = [45, 89, 72, 99, 12]. Выведите самое большое число из списка с помощью встроенной функции max().",
+          initialCode: r"""scores = [45, 89, 72, 99, 12]
+""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''print(99)''', globals(), locals())
+sys.stdout = old_stdout
+
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_8": {
+        title: "Задача 8: Удаление элемента",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Дан список items = ['book', 'pen', 'pencil']. Удалите элемент 'pen' методом remove() и выведите измененный список.",
+          initialCode: r"""items = ['book', 'pen', 'pencil']
+""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''print(['book', 'pencil'])''', globals(), locals())
+sys.stdout = old_stdout
+
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_9": {
+        title: "Задача 9: Разворот списка",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "Дан список letters = ['a', 'b', 'c', 'd']. Разверните список в обратном порядке (например, с помощью .reverse()) и выведите его.",
+          initialCode: r"""letters = ['a', 'b', 'c', 'd']
+""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''print(['d', 'c', 'b', 'a'])''', globals(), locals())
+sys.stdout = old_stdout
+
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      },
+      "solve_10": {
+        title: "Задача 10: Генератор списков",
+        theory: "Решите практическую задачу.",
+        task: {
+          description: "С помощью List Comprehension создайте список квадратов элементов от 1 до 5 (включительно) и выведите его: [1, 4, 9, 16, 25].",
+          initialCode: r"""""",
+          testCases: [`
+import sys
+from io import StringIO
+old_stdout = sys.stdout
+sys.stdout = user_out = StringIO()
+{{USER_CODE}}
+sys.stdout = expected_out = StringIO()
+exec(r'''print([x**2 for x in range(1, 6)])''', globals(), locals())
+sys.stdout = old_stdout
+
+assert user_out.getvalue().strip() == expected_out.getvalue().strip(), "Вывод не совпадает с ожидаемым"
+`]
+        }
+      }
+    }\n  }\n};\n

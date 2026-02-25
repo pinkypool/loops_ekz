@@ -24,7 +24,6 @@ interface PythonRunnerProps {
 export function PythonRunner({ 
   initialCode = 'print("Hello, CS 101!")', 
   testCases = [],
-  solutionCode = "",
   hints = [],
   onSuccess,
   onSuccessWithAttempts,
@@ -34,7 +33,6 @@ export function PythonRunner({
   const { runCode, isRunning, isReady } = usePython();
   const [output, setOutput] = useState("");
   const [errorCount, setErrorCount] = useState(0);
-  const [showSolution, setShowSolution] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleRun = async () => {
@@ -77,7 +75,6 @@ export function PythonRunner({
   };
 
   const currentHint = errorCount >= 3 && hints.length > 0 ? hints[Math.min(hints.length - 1, Math.floor((errorCount - 3) / 2))] : null;
-  const canShowSolution = errorCount >= 5 && solutionCode;
 
   return (
     <div className="flex flex-col h-full gap-4">
@@ -100,11 +97,6 @@ export function PythonRunner({
         </Button>
         <div className="flex gap-2 text-sm text-muted-foreground">
           {errorCount > 0 && <span>Ошибок: {errorCount}</span>}
-          {canShowSolution && !showSolution && (
-            <Button variant="outline" size="sm" onClick={() => setShowSolution(true)}>
-              Показать решение
-            </Button>
-          )}
         </div>
       </div>
 
@@ -115,17 +107,6 @@ export function PythonRunner({
               <div>
                 <strong>Подсказка:</strong> {currentHint}
               </div>
-            </CardContent>
-         </Card>
-      )}
-
-      {showSolution && (
-         <Card className="bg-primary/5 border-primary/20">
-            <CardContent className="p-4 text-sm">
-              <div className="font-semibold mb-2">Возможное решение:</div>
-              <pre className="bg-muted p-3 rounded-md overflow-x-auto text-xs">
-                {solutionCode}
-              </pre>
             </CardContent>
          </Card>
       )}

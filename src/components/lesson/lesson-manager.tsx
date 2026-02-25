@@ -5,7 +5,6 @@ import { LessonTimer } from "@/components/lesson/timer";
 import { QuizRunner, QuizQuestion } from "@/components/lesson/quiz-runner";
 import { PythonRunner } from "@/components/editor/python-runner";
 import { Card } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ReactMarkdown from "react-markdown";
 
 interface LessonManagerProps {
@@ -61,6 +60,8 @@ export function LessonManager({ moduleId, lessonId, lessonData, nextLessonUrl }:
     saveProgress({ codeAttempts: attempts, isCompleted: true });
   };
 
+  const isQuizMode = !!(lessonData.quiz && lessonData.quiz.length > 0);
+
   return (
     <>
       <div className="flex justify-between items-center mb-6">
@@ -69,51 +70,44 @@ export function LessonManager({ moduleId, lessonId, lessonData, nextLessonUrl }:
         <LessonTimer initialSeconds={3000} onTick={handleTimerTick} />
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6 h-[calc(100vh-12rem)]">
-        {/* Left Side: Theory & Tasks */}
-        <Card className="h-full flex flex-col overflow-hidden">
-          <Tabs defaultValue="theory" className="h-full flex flex-col">
-            <div className="px-4 pt-4">
-               <TabsList className="w-full grid grid-cols-3">
-                 <TabsTrigger value="theory">Теория</TabsTrigger>
-                 <TabsTrigger value="task">Задание</TabsTrigger>
-                 <TabsTrigger value="quiz">Тест</TabsTrigger>
-               </TabsList>
+      <div className={isQuizMode ? "" : "grid md:grid-cols-2 gap-6 h-[calc(100vh-12rem)]"}>
+        {isQuizMode ? (
+          <div className="flex flex-col gap-6 w-full max-w-3xl mx-auto">
+            <Card className="p-6 prose prose-slate dark:prose-invert select-none">
+              <ReactMarkdown>{lessonData.theory}</ReactMarkdown>
+            </Card>
+            
+            <div className="h-[600px] mb-10">
+              <QuizRunner questions={lessonData.quiz!} onComplete={handleQuizComplete} nextLessonUrl={nextLessonUrl} />
             </div>
-            
-            <TabsContent value="theory" className="flex-1 overflow-y-auto p-6 prose prose-slate dark:prose-invert max-w-none select-none">
-               <h2>{lessonData.title}</h2>
-               <ReactMarkdown>{lessonData.theory}</ReactMarkdown>
-            </TabsContent>
-            
-            <TabsContent value="task" className="flex-1 overflow-y-auto p-6 select-none">
-               <h3 className="font-bold text-lg mb-4">Практическое задание</h3>
-               <div className="prose prose-slate dark:prose-invert">
-                 <ReactMarkdown>{lessonData.task.description}</ReactMarkdown>
-               </div>
-            </TabsContent>
+          </div>
+        ) : (
+          <>
+            {/* Left Side: Tasks */}
+            <Card className="h-full flex flex-col overflow-hidden">
+              <div className="flex-1 overflow-y-auto p-6 select-none">
+                <div className="prose prose-slate dark:prose-invert mb-6">
+                  <ReactMarkdown>{lessonData.theory}</ReactMarkdown>
+                </div>
+                <h3 className="font-bold text-lg mb-4">Задание</h3>
+                <div className="prose prose-slate dark:prose-invert">
+                  <ReactMarkdown>{lessonData.task.description}</ReactMarkdown>
+                </div>
+              </div>
+            </Card>
 
-            <TabsContent value="quiz" className="flex-1 overflow-y-auto overflow-hidden">
-               {lessonData.quiz && lessonData.quiz.length > 0 ? (
-                 <QuizRunner questions={lessonData.quiz} onComplete={handleQuizComplete} />
-               ) : (
-                 <div className="p-6 text-muted-foreground">Тесты для этого урока еще не добавлены.</div>
-               )}
-            </TabsContent>
-          </Tabs>
-        </Card>
-
-        {/* Right Side: IDE */}
-        <div className="h-full">
-           <PythonRunner 
-             initialCode={lessonData.task.initialCode}
-             testCases={lessonData.task.testCases}
-             solutionCode={lessonData.task.solutionCode}
-             hints={lessonData.task.hints}
-             nextLessonUrl={nextLessonUrl}
-             onSuccessWithAttempts={handlePythonSuccess}
-           />
-        </div>
+            {/* Right Side: IDE */}
+            <div className="h-full">
+               <PythonRunner 
+                 initialCode={lessonData.task.initialCode}
+                 testCases={lessonData.task.testCases}
+                 hints={lessonData.task.hints}
+                 nextLessonUrl={nextLessonUrl}
+                 onSuccessWithAttempts={handlePythonSuccess}
+               />
+            </div>
+          </>
+        )}
       </div>
     </>
   );

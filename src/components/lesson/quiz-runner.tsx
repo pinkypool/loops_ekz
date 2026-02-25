@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { CheckCircle2, AlertCircle, RefreshCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export interface QuizQuestion {
   question: string;
@@ -15,9 +16,10 @@ export interface QuizQuestion {
 interface QuizRunnerProps {
   questions: QuizQuestion[];
   onComplete?: (score: number, total: number) => void;
+  nextLessonUrl?: string;
 }
 
-export function QuizRunner({ questions, onComplete }: QuizRunnerProps) {
+export function QuizRunner({ questions, onComplete, nextLessonUrl }: QuizRunnerProps) {
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -79,10 +81,22 @@ export function QuizRunner({ questions, onComplete }: QuizRunnerProps) {
           Ваш результат: <span className="font-bold text-foreground">{score}</span> из {questions.length}
         </CardDescription>
         
-        <Button onClick={handleRestart} variant="outline" size="lg" className="gap-2">
-          <RefreshCcw className="w-4 h-4" />
-          {'Попробовать снова'}
-        </Button>
+        {nextLessonUrl ? (
+          <div className="flex gap-4">
+            <Button onClick={handleRestart} variant="outline" size="lg" className="gap-2">
+              <RefreshCcw className="w-4 h-4" />
+              Попробовать снова
+            </Button>
+            <Link href={nextLessonUrl}>
+              <Button size="lg">Продолжить</Button>
+            </Link>
+          </div>
+        ) : (
+          <Button onClick={handleRestart} variant="outline" size="lg" className="gap-2">
+            <RefreshCcw className="w-4 h-4" />
+            Попробовать снова
+          </Button>
+        )}
       </Card>
     );
   }
