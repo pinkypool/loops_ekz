@@ -1,10 +1,6 @@
 import { modules } from "@/data/lessons";
 import { notFound } from "next/navigation";
-import ReactMarkdown from "react-markdown";
-import { PythonRunner } from "@/components/editor/python-runner";
-import { Card } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AntiCopy } from "@/components/ui/anti-copy";
+import { LessonManager } from "@/components/lesson/lesson-manager";
 
 export default async function LessonPage({
   params
@@ -41,48 +37,12 @@ export default async function LessonPage({
 
   return (
     <div className="container mx-auto max-w-6xl py-6 px-4">
-      <div className="grid md:grid-cols-2 gap-6 h-[calc(100vh-10rem)]">
-        
-        {/* Left Side: Theory & Tasks */}
-        <Card className="h-full flex flex-col overflow-hidden">
-          <Tabs defaultValue="theory" className="h-full flex flex-col">
-            <div className="px-4 pt-4">
-               <TabsList className="w-full grid grid-cols-2">
-                 <TabsTrigger value="theory">Теория</TabsTrigger>
-                 <TabsTrigger value="task">Задание</TabsTrigger>
-               </TabsList>
-            </div>
-            
-            <TabsContent value="theory" className="flex-1 overflow-y-auto p-0 prose prose-slate dark:prose-invert max-w-none select-none">
-              <AntiCopy className="h-full w-full p-6" message="Копирование теории запрещено!">
-                 <h2>{lessonData.title}</h2>
-                 <ReactMarkdown>{lessonData.theory}</ReactMarkdown>
-              </AntiCopy>
-            </TabsContent>
-            
-            <TabsContent value="task" className="flex-1 overflow-y-auto p-0 select-none">
-              <AntiCopy className="h-full w-full p-6" message="Копирование задания запрещено!">
-                 <h3 className="font-bold text-lg mb-4">Практическое задание</h3>
-                 <div className="prose prose-slate dark:prose-invert">
-                   <ReactMarkdown>{lessonData.task.description}</ReactMarkdown>
-                 </div>
-              </AntiCopy>
-            </TabsContent>
-          </Tabs>
-        </Card>
-
-        {/* Right Side: IDE */}
-        <div className="h-full">
-           <PythonRunner 
-             initialCode={lessonData.task.initialCode}
-             testCases={lessonData.task.testCases}
-             solutionCode={lessonData.task.solutionCode}
-             hints={lessonData.task.hints}
-             nextLessonUrl={nextLessonUrl}
-           />
-        </div>
-
-      </div>
+      <LessonManager 
+        moduleId={moduleId} 
+        lessonId={lessonId} 
+        lessonData={lessonData} 
+        nextLessonUrl={nextLessonUrl} 
+      />
     </div>
   );
 }

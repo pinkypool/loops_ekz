@@ -17,6 +17,7 @@ interface PythonRunnerProps {
   solutionCode?: string;
   hints?: string[];
   onSuccess?: () => void;
+  onSuccessWithAttempts?: (attempts: number) => void;
   nextLessonUrl?: string;
 }
 
@@ -26,6 +27,7 @@ export function PythonRunner({
   solutionCode = "",
   hints = [],
   onSuccess,
+  onSuccessWithAttempts,
   nextLessonUrl
 }: PythonRunnerProps) {
   const [code, setCode] = useState(initialCode);
@@ -67,6 +69,7 @@ export function PythonRunner({
     if (result.success && allTestsPassed) {
       setIsSuccess(true);
       if (onSuccess) onSuccess();
+      if (onSuccessWithAttempts) onSuccessWithAttempts(errorCount);
     } else {
       setIsSuccess(false);
       setErrorCount((prev) => prev + 1);
