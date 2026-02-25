@@ -23,10 +23,9 @@ export default async function Home() {
       progress: 0,
       isLocked: false,
       lessons: [
-        { id: "1.1", title: "Цикл while", completed: false },
-        { id: "1.2", title: "Управление потоком", completed: false },
-        { id: "1.3", title: "Цикл for и range()", completed: false },
-        { id: "1.4", title: "Вложенные циклы", completed: false },
+        { id: "theory", title: "Теория и тест", completed: false },
+        { id: "retype_1", title: "Разминка 1", completed: false },
+        { id: "solve_1", title: "Задача 1", completed: false },
       ],
     },
     {
@@ -36,10 +35,9 @@ export default async function Home() {
       progress: 0,
       isLocked: true, // Will unlock when module 1 is done
       lessons: [
-        { id: "2.1", title: "Создание списков и индексы", completed: false },
-        { id: "2.2", title: "Срезы (Slices)", completed: false },
-        { id: "2.3", title: "Методы списков", completed: false },
-        { id: "2.4", title: "List Comprehensions", completed: false },
+        { id: "theory", title: "Теория и тест", completed: false },
+        { id: "retype_1", title: "Разминка 1", completed: false },
+        { id: "solve_1", title: "Задача 1", completed: false },
       ],
     },
   ];

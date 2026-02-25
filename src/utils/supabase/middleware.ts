@@ -36,36 +36,6 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const isAuthRoute = request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/register');
-  const isAdminRoute = request.nextUrl.pathname.startsWith('/admin');
-
-  if (
-    !user &&
-    !request.nextUrl.pathname.startsWith("/login") &&
-    !request.nextUrl.pathname.startsWith("/auth")
-  ) {
-    // no user, potentially respond by redirecting the user to the login page
-    const url = request.nextUrl.clone();
-    url.pathname = "/login";
-    return NextResponse.redirect(url);
-  }
-
-  if (user && isAuthRoute) {
-      // User is already logged in, redirect to dashboard
-      const url = request.nextUrl.clone();
-      url.pathname = "/";
-      return NextResponse.redirect(url);
-  }
-
-  // Basic role check. In a real app we would check `user.user_metadata.role` or a `profiles` table.
-  // For now, let's assume if it's an admin route, they need some admin flag.
-  if (user && isAdminRoute) {
-     const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
-     if (!profile || profile.role !== 'admin') {
-         const url = request.nextUrl.clone();
-         url.pathname = "/";
-         return NextResponse.redirect(url);
-     }
-  }
 
   // IMPORTANT: You *must* return the supabaseResponse object as it is. If you're
   // creating a new response object with NextResponse.next() make sure to:
