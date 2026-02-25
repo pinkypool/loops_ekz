@@ -1,0 +1,24 @@
+
+> ekzamen@0.1.0 build
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+✓ Compiled successfully in 1921.0ms
+  Running TypeScript ...
+Failed to compile.
+
+./src/app/api/seed/route.ts:51:16
+Type error: Property 'role' does not exist on type '{ name: string; email: string; password: string; }'.
+
+[0m [90m 49 |[39m       
+ [90m 50 |[39m       [90m// If we don't have triggers working we can set role manully[39m
+[31m[1m>[22m[39m[90m 51 |[39m       [36mif[39m (user[33m.[39mrole [33m===[39m [32m'admin'[39m) {
+ [90m    |[39m                [31m[1m^[22m[39m
+ [90m 52 |[39m          [90m// Create profile explicitly[39m
+ [90m 53 |[39m          [36mconst[39m { error[33m:[39m profileError } [33m=[39m [36mawait[39m supabaseAdmin
+ [90m 54 |[39m            [33m.[39m[36mfrom[39m([32m'profiles'[39m)[0m
+Next.js build worker exited with code: 1 and signal: null
